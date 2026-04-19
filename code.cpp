@@ -42,16 +42,8 @@ int pref(int n) {
     }
     return dp[(s.size() + 1)/2][1][0]+dp[(s.size() + 1)/2][0][0];
 }
-int get(int x) {
-    string s=to_string(x);
-    if (x<=0)return (x==0);
-    else return pref(x)+len[s.size()-1]+1;
-}
 void solve(){
-    int l,r;
-    cin>>l>>r;
-    if(l>r)swap(l,r);
-    cout<<get(r)-get(l-1)<<endl;
+
 }
 signed main() {
     iostream::sync_with_stdio(0);
