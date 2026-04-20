@@ -14,7 +14,7 @@ void solve(){
     d=((k+d-1)/d)*d;
     int l=0,r=4e18,mid,ans=-1;
     while (l<=r) {
-        mid=(l+r)/2;
+        mid=(l+r)/2; // checkung
         int num=mid;
         num=(mid/d)*(2*k+(d-k));
         int rem=mid%d;
