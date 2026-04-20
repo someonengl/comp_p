@@ -18,7 +18,7 @@ signed main() {
     cout.tie(0);
     for (int i=2;i<=1e6;i++) {
         if (vis[i]==0) {
-            for (int j=i+i;j<=1e6;j++) {
+            for (int j=i*i;j<=1e6;j++) {
                 vis[j]++;
             }
         }
