@@ -10,22 +10,12 @@ vector<int> v;
 void solve(){
     int n;
     cin>>n;
-    cout<<*(--upper_bound(all(v),n))<<endl;
+    cout<<((int)sqrtl(n/2))+((int)sqrtl(n/4))<<endl;
 }
 signed main() {
     iostream::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    for (int i=2;i<=1e6;i++) {
-        if (vis[i]==0) {
-            for (int j=i+i;j<=1e6;j+=i) {
-                vis[j]++;
-            }
-        }
-    }
-    for (int i=1;i<=1e6;i++) {
-        if (vis[i]==2)v.push_back(i*i);
-    }
     int t=1;
     if (testcases)cin>>t;
     for(int i=1;i<=t;i++){
