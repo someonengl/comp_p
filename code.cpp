@@ -15,7 +15,7 @@ void solve(){
     int l=0,r=4e18,mid,ans=-1;
     while (l<=r) {
         mid=(l+r)/2;
-        int num=mid; 
+        int num=mid;
         num=(mid/d)*(2*k+(d-k));
         int rem=mid%d;
         if (rem>k)rem=(2*(k)+(rem-k));
