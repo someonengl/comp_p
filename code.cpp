@@ -5,25 +5,33 @@ using namespace std;
 #define all(v) v.begin(),v.end()
 bool testcases=0;
 const int MOD=1e9;
-int pref[1000000+10];
-int ans[1000000+10];
 void solve(){
-    int n,k;
-    cin>>n>>k;
-    if (n<k) {
-        cout<<1;
-        return;
+    int d,k,t;
+    cin>>k>>d>>t;
+    t=4*t;
+    d*=2;
+    k*=2;
+    d=((k+d-1)/d)*d;
+    int l=0,r=4e18,mid,ans=-1;
+    while (l<=r) {
+        mid=(l+r)/2;
+        int num=mid;
+        num=(mid/d)*(2*k+(d-k));
+        int rem=mid%d;
+        if (rem>k)rem=(2*(k)+(rem-k));
+        else rem=2*rem;
+        num+=rem;
+        if (num>=t) {
+            ans=mid;
+            r=mid-1;
+        }
+        else l=mid+1;
     }
-    pref[0]=1;
-    for (int i=1;i<k;i++) {
-        ans[i]=1;
-        pref[i]=pref[i-1]+ans[i];
-    }
-    for (int i=k;i<=n;i++) {
-        ans[i]=(pref[i-1]-(i==k?0ll:pref[i-k-1])+MOD)%MOD;
-        pref[i]=(pref[i-1]+ans[i])%MOD;
-    }
-    cout<<ans[n]<<endl;
+    //cout<<ans<<endl;
+    double anss=ans;
+    anss/=2;
+    cout.precision(1);
+    cout<<fixed<<anss<<endl;
 }
 signed main() {
     iostream::sync_with_stdio(0);
