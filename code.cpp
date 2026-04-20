@@ -3,7 +3,7 @@ using namespace std;
 #define int long long
 #define endl '\n'
 #define all(v) v.begin(),v.end()
-bool testcases=0;
+bool testcases=1;
 const int MOD=1e9;
 int vis[1000001];
 vector<int> v;
