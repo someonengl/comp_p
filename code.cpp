@@ -13,10 +13,10 @@ void solve(){
     set<int> st;
     for (int i=1;i<=n;i++) {
         for (int j=2;j*j<=v[i];j++) {
-            while (v[i]%j==0) {
-                v[i]/=j;
+            if (v[i]%j==0) {
+                st.insert(j);
+                st.insert(v[i]/j);
             }
-            st.insert(j);
         }
         if (v[i]>1)st.insert(v[i]);
     }
@@ -25,7 +25,7 @@ void solve(){
         bool flag=1;
         for (int j=2;j*j<=i;j++) {
             if (i%j==0) {
-                if (st.count(j)){flag=0;break;}
+                if (st.count(j) or st.count(i/j)){flag=0;break;}
             }
         }
         if (flag)ans.push_back(i);
