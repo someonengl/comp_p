@@ -18,7 +18,7 @@ void solve(){
     }
     int ans=0;
     for (int i=1;i<m;i++) {
-        if (!(vis[i] or vis[i+1]))ans++;
+        if (!(vis[i] or vis[i+1] or vis[i-1]))ans++;
     }
     cout<<ans<<endl;
 }
