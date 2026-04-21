@@ -5,46 +5,40 @@ using namespace std;
 #define all(v) v.begin(),v.end()
 bool testcases=0;
 const int MOD=1e9;
-vector<int> ans;
-vector<int> g[200005];
-bool vis[200005];
-bool flag=1;
-int par[200005];
-void dfs(int start,int p) {
-    par[start]=p;
-    vis[start]=1;
-    ans.push_back(start);
-    vector<int> adj;
-    for (int i:g[start]) {
-        if (!vis[i]) {
-            adj.push_back(i);
-        }
-    }
-    if (start==1) {
-        if (flag)flag=0;
-        else if (adj.size()==0) {
-            for (int i:ans) {
-                cout<<i<<' ';
-            }
-            exit(0);
-        }
-    }
-    sort(all(adj));
-    for (int i:adj)dfs(i,start);
-    if (adj.size()==0)dfs(p,par[p]);
-}
 void solve(){
-    int n;
-    cin>>n;
-    memset(par,-1,sizeof(par));
-    for (int i=1;i<n;i++) {
+    int h,w,n;
+    cin>>h>>w>>n;
+    vector<array<int,2>> v[2];
+    for (int i=1;i<=n;i++) {
         int l,r;
         cin>>l>>r;
-        g[l].push_back(r);
-        g[r].push_back(l);
+        v[0].push_back({l,i});
+        v[1].push_back({r,i});
     }
-    dfs(1,-1);
-    for (int i:ans)cout<<i<<' ';
+    v[0].push_back({0,-1});
+    v[1].push_back({0,-1});
+    int dv[2][n+2];
+    sort(all(v[0]));
+    sort(all(v[1]));
+    for (int f=0;f<2;f++) {
+        int d=0;
+        for (int i=1;i<v[f].size();i++) {
+            d+=v[f][i][0]-v[f][i-1][0]-1;
+            dv[f][i]=d;
+        }
+    }
+    map<int,array<int,2>>mp;
+    for (int f=0;f<2;f++) {
+        for (int i=1;i<v[f].size();i++) {
+            v[f][i][0]-=dv[f][i];
+        }
+    }
+    for (int f=0;f<2;f++) {
+        for (int i=1;i<v[f].size();i++) {
+            mp[v[f][i][1]][f]=v[f][i][0];
+        }
+    }
+    for (int i=1;i<=n;i++)cout<<mp[i][0]<<' '<<mp[i][1]<<endl;
 }
 signed main() {
     iostream::sync_with_stdio(0);
