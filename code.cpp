@@ -5,31 +5,28 @@ using namespace std;
 #define all(v) v.begin(),v.end()
 bool testcases=0;
 const int MOD=1e9;
-vector<int> v;
-vector<int> g[200005];
-bool vis[200005];
-void dfs(int start) {
-    vis[start]=1;
-    v.push_back(start);
-    for (int i:g[start]) {
-        if (vis[i])continue;
-        vis[i]=1;
-        dfs(i);
-        v.push_back(start);
-    }
-}
 void solve(){
+    int x;
+    cin>>x;
+    int cnt[x+1];
+    memset(cnt,0,sizeof(cnt));
     int n;
     cin>>n;
-    for (int i=1;i<n;i++) {
-        int l,r;
-        cin>>l>>r;
-        g[l].push_back(r);
-        g[r].push_back(l);
+    int v[n+1];
+    for (int i=1;i<=n;i++){cin>>v[i];v[i]%=x;}
+    int m;
+    cin>>m;
+    for (int i=1;i<=m;i++) {
+        int h;
+        cin>>h;
+        cnt[h%x]++;
     }
-    for (int i=1;i<=n;i++)sort(all(g[i]));
-    dfs(1);
-    for (int i:v)cout<<i<<' ';
+    int ans=0;
+    for (int i=1;i<=n;i++) {
+        cout<<cnt[x-v[i]]<<' '<<v[i]<<' '<<x-v[i]<<endl;
+        ans+=cnt[x-v[i]];
+    }
+    cout<<ans;
 }
 signed main() {
     iostream::sync_with_stdio(0);
