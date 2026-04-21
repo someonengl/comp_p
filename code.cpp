@@ -5,32 +5,33 @@ using namespace std;
 #define all(v) v.begin(),v.end()
 bool testcases=0;
 const int MOD=1e9;
-string s;
-vector<string> v;
-map<string,bool> vis;
-void func(string& s,int l,int r) {
-    if (l==r) {
-        if (!vis[s]) {
-            v.push_back(s);
-            vis[s]=1;
-        }
-    }
-    else {
-        for (int i=l;i<=r;i++) {
-            swap(s[i],s[l]);
-            func(s,l+1,r);
-            swap(s[i],s[l]);
-        }
-    }
-}
 void solve(){
-    cin>>s;
-    int n;
-    cin>>n;
-    func(s,0,s.size()-1);
-    sort(all(v));
-    for (string sc:v)cout<<sc<<endl;
-    cout<<v[n-1]<<endl;
+    int n,m;
+    cin>>n>>m;
+    int v[n+1];
+    for (int i=1;i<=n;i++)cin>>v[i];
+    set<int> st;
+    for (int i=1;i<=n;i++) {
+        for (int j=2;j*j<=v[i];j++) {
+            while (v[i]%j==0) {
+                v[i]/=j;
+            }
+            st.insert(j);
+        }
+        if (v[i]>1)st.insert(v[i]);
+    }
+    vector<int> ans;
+    for (int i=1;i<=m;i++) {
+        bool flag=1;
+        for (int j=2;j*j<=i;j++) {
+            if (i%j==0) {
+                if (st.count(j)){flag=0;break;}
+            }
+        }
+        if (flag)ans.push_back(i);
+    }
+    cout<<ans.size()<<endl;
+    for (int i:ans)cout<<i<<endl;
 }
 signed main() {
     iostream::sync_with_stdio(0);
