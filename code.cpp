@@ -9,15 +9,18 @@ int pref[1000010];
 void solve(){
     int n,m;
     cin>>n>>m;
-    set<array<int,2>> st;
-    for (int i=1;i<m;i++)st.insert({i,i+1});
+    int vis[m+1];
+    memset(vis,0,sizeof(vis));
     for (int i=1;i<=n;i++) {
         int x;
         cin>>x;
-        if (st.count({x,x+1}))st.erase(st.find({x,x+1}));
-        if (st.count({x-1,x}))st.erase(st.find({x-1,x}));
+        vis[x]=1;
     }
-    cout<<st.size()<<endl;
+    int ans=0;
+    for (int i=1;i<m;i++) {
+        if (!(vis[i] and vis[i+1]))ans++;
+    }
+    cout<<ans<<endl;
 }
 signed main() {
     iostream::sync_with_stdio(0);
