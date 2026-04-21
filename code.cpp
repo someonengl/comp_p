@@ -24,6 +24,7 @@ void solve(){
     int n;
     cin>>n;
     func(s,0,s.size()-1);
+    for (string sc:v)cout<<sc<<endl;
     cout<<v[n-1]<<endl;
 }
 signed main() {
