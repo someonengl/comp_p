@@ -23,11 +23,7 @@ void solve(){
     cin>>s;
     int n;
     cin>>n;
-    vector<char> vc;
-    string sc="";
-    vector<char> left;
-    for (char c:s)left.push_back(c);
-    func(sc,0,s.size()-1);
+    func(s,0,s.size()-1);
     cout<<v[n-1]<<endl;
 }
 signed main() {
