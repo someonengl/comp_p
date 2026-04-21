@@ -16,20 +16,17 @@ void solve(){
         v[0].push_back({l,i});
         v[1].push_back({r,i});
     }
-    v[0].push_back({0,-1});
-    v[1].push_back({0,-1});
-    int dv[2][n+2];
     sort(all(v[0]));
     sort(all(v[1]));
     for (int f=0;f<2;f++) {
         int c=1;
-        for (int i=1;i<v[f].size();i++) {
-            v[f][i][0]=c++;
+        for (auto& [num,ind]:v[f]) {
+            num=c++;
         }
     }
     for (int f=0;f<2;f++) {
-        for (int i=1;i<v[f].size();i++) {
-            mp[v[f][i][1]][f]=v[f][i][0];
+        for (auto& [num,ind]:v[f]) {
+            mp[ind][f]=num;
         }
     }
     for (int i=1;i<=n;i++)cout<<mp[i][0]<<' '<<mp[i][1]<<endl;
