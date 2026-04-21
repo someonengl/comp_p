@@ -5,19 +5,27 @@ using namespace std;
 #define all(v) v.begin(),v.end()
 bool testcases=0;
 const int MOD=1e9;
-void solve(){
-    int n,m;
-    cin>>n>>m;
-    int v[n+1];
-    for (int i=1;i<=n;i++)cin>>v[i];
-    int lcmm=1;
-    for (int i=1;i<=n;i++)lcmm=lcm(lcmm,v[i]);
-    vector<int> ans;
-    for (int i=1;i<=m;i++) {
-        if (gcd(i,lcmm)==1)ans.push_back(i);
+string s;
+vector<string> v;
+void func(string& sc) {
+    if (sc.size()==s.size()) {
+        v.push_back(sc);
+        return;
     }
-    cout<<ans.size()<<endl;
-    for (int i:ans)cout<<i<<endl;
+    for (int i=0;i<s.size();i++) {
+        sc.push_back(s[i]);
+        func(sc);
+        sc.pop_back();
+    }
+}
+void solve(){
+    cin>>s;
+    int n;
+    cin>>n;
+    vector<char> vc;
+    string sc="";
+    func(sc);
+    cout<<v[n-1]<<endl;
 }
 signed main() {
     iostream::sync_with_stdio(0);
