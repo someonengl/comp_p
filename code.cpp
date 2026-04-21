@@ -5,32 +5,18 @@ using namespace std;
 #define all(v) v.begin(),v.end()
 bool testcases=0;
 void solve(){
-    int n,t;
-    cin>>n>>t;
-    int v[n];
-    for (int i=0;i<n;i++)cin>>v[i];
-    int n1=n/2;
-    int n2=n-n1;
-    multiset<int> mst1,mst2;
-    for (int mask=0;mask<(1<<n1);mask++) {
-        int sum=0;
-        for (int i=0;i<n1;i++) {
-            if ((mask>>i)&1)sum+=v[i];
+    vector<int> v;
+    for (int i=1;i<=1e12;i*=3) {
+        for (int j=1;j<=1e12;j*=5) {
+            if (i==1 and j==1)continue;
+            if (i*j>1e12)break;
+            v.push_back(i*j);
         }
-        mst1.insert(sum);
     }
-    for (int mask=0;mask<(1<<n2);mask++) {
-        int sum=0;
-        for (int i=0;i<n2;i++) {
-            if ((mask>>i)&1)sum+=v[i+n1];
-        }
-        mst2.insert(sum);
-    }
-    int ans=mst1.count(t)+mst2.count(t);
-    for (int i:mst1) {
-        ans+=mst2.count(t-i);
-    }
-    cout<<ans<<endl;
+    sort(all(v));
+    int n;
+    cin>>n;
+    cout<<v[n-1]<<endl;
 }
 signed main() {
     iostream::sync_with_stdio(0);
