@@ -16,6 +16,8 @@ void solve(){
         pref[x-1]++;
     }
     for (int i=1;i<=m;i++)pref[i]+=pref[i-1];
+    for (int i=1;i<=m;i++)cout<<pref[i]<<' ';
+    cout<<endl;
     int ans=0;
     for (int i=1;i<=m;i++)ans+=(pref[i]==0);
     cout<<ans;
