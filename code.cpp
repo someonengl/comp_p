@@ -1,31 +1,23 @@
 #include<bits/stdc++.h>
 using namespace std;
-//#define int long long
+#define int long long
 #define endl '\n'
 #define all(v) v.begin(),v.end()
 bool testcases=0;
 const int MOD=1e9;
+int pref[1000010];
 void solve(){
-    int x;
-    cin>>x;
-    int cnt1[x+1],cnt2[x+1];
-    memset(cnt1,0,sizeof(cnt1));
-    memset(cnt2,0,sizeof(cnt2));
-    int n;
-    cin>>n;
-    int v[n+1];
-    for (int i=1;i<=n;i++){cin>>v[i];cnt1[v[i]%x]++;}
-    int m;
-    cin>>m;
-    for (int i=1;i<=m;i++) {
-        int h;
-        cin>>h;
-        cnt2[h%x]++;
+    int n,m;
+    cin>>n>>m;
+    for (int i=1;i<=n;i++) {
+        int x;
+        cin>>x;
+        pref[x+2]--;
+        pref[x-1]++;
     }
+    for (int i=1;i<=m;i++)pref[i]+=pref[i-1];
     int ans=0;
-    for (int i=0;i<x;i++) {
-        ans+=cnt1[i]*cnt2[x-i];
-    }
+    for (int i=1;i<=m;i++)ans+=(pref[i]==0);
     cout<<ans;
 }
 signed main() {
