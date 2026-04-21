@@ -8,23 +8,23 @@ const int MOD=1e9;
 void solve(){
     int x;
     cin>>x;
-    int cnt[x+1];
-    memset(cnt,0,sizeof(cnt));
+    int cnt1[x+1],cnt2[x+1];
+    memset(cnt1,0,sizeof(cnt1));
+    memset(cnt2,0,sizeof(cnt2));
     int n;
     cin>>n;
     int v[n+1];
-    for (int i=1;i<=n;i++){cin>>v[i];v[i]%=x;}
+    for (int i=1;i<=n;i++){cin>>v[i];cnt1[v[i]%x]++;}
     int m;
     cin>>m;
     for (int i=1;i<=m;i++) {
         int h;
         cin>>h;
-        cnt[h%x]++;
+        cnt2[h%x]++;
     }
     int ans=0;
-    for (int i=1;i<=n;i++) {
-        cout<<cnt[x-v[i]]<<' '<<v[i]<<' '<<x-v[i]<<endl;
-        ans+=cnt[x-v[i]];
+    for (int i=0;i<x;i++) {
+        ans+=cnt1[i]*cnt2[x-i];
     }
     cout<<ans;
 }
