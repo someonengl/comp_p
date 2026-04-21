@@ -15,6 +15,8 @@ void solve(){
         int x;
         cin>>x;
         vis[x]=1;
+        vis[x-1]=1;
+        vis[x+1]=1;
     }
     int ans=0;
     for (int i=1;i<m;i++) {
