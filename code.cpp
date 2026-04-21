@@ -8,7 +8,7 @@ void solve(){
     int n;
     cin>>n;
     int v[]={1,2,4,7,8,11,13,14};
-    cout<<(v[(n-1)%8])+(15*(n-1)/8)<<endl;
+    cout<<(v[(n-1)%8])+(15*((n-1)/8))<<endl;
 }
 signed main() {
     iostream::sync_with_stdio(0);
