@@ -7,18 +7,21 @@ bool testcases=0;
 const int MOD=1e9;
 int pref[1000010];
 void solve(){
-    int n,m;
-    cin>>n>>m;
-    int vis[m+1];
-    memset(vis,0,sizeof(vis));
-    for (int i=1;i<=n;i++) {
-        int x;
-        cin>>x;
-        vis[x]=1;
-    }
+    int n;
+    cin>>n;
     int ans=0;
-    for (int i=1;i<m;i++) {
-        if (!(vis[i] or vis[i+1] or vis[i-1]))ans++;
+    for (int mask=0;mask<(1<<n);mask++) {
+        if (__builtin_popcount(mask)!=n/2) {
+            continue;
+        }
+        int sum1=0,sum2=0;
+        for (int i=0;i<n;i++) {
+            if ((mask>>i)&1) {
+                sum1+=i+1;
+            }
+            else sum2+=i+1;
+        }
+        if (abs(sum1-sum2)%11==0)ans++;
     }
     cout<<ans<<endl;
 }
