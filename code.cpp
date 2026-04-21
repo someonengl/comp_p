@@ -45,7 +45,7 @@ void solve(){
             }
             else sum2+=i+1;
         }
-        if (abs(sum1-sum2)%11==0)ans+=C(n/2,n/2)*C(n-n/2,n-n/2);
+        if (abs(sum1-sum2)%11==0)ans+=(f[n/2]*f[n-n/2])%MOD;
     }
     cout<<ans<<endl;
 }
