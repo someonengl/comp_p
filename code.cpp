@@ -9,7 +9,9 @@ vector<int> ans;
 vector<int> g[200005];
 bool vis[200005];
 bool flag=1;
-void dfs(int start) {
+int par[200005];
+void dfs(int start,int p) {
+    par[start]=p;
     vis[start]=1;
     ans.push_back(start);
     vector<int> adj;
@@ -26,20 +28,22 @@ void dfs(int start) {
             }
             exit(0);
         }
+        else dfs(p,p[par]);
     }
     sort(all(adj));
-    for (int i:adj)dfs(i);
+    for (int i:adj)dfs(i,start);
 }
 void solve(){
     int n;
     cin>>n;
+    memset(par,-1,sizeof(par));
     for (int i=1;i<n;i++) {
         int l,r;
         cin>>l>>r;
         g[l].push_back(r);
         g[r].push_back(l);
     }
-    dfs(1);
+    dfs(1,-1);
     for (int i:ans)cout<<i<<' ';
 }
 signed main() {
