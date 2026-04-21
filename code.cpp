@@ -28,10 +28,10 @@ void dfs(int start,int p) {
             }
             exit(0);
         }
-        else dfs(p,p[par]);
     }
     sort(all(adj));
     for (int i:adj)dfs(i,start);
+    if (adj.size()==0)dfs(p,par[p]);
 }
 void solve(){
     int n;
