@@ -23,6 +23,7 @@ void solve(){
     vector<int> ans;
     for (int i=1;i<=m;i++) {
         bool flag=1;
+        flag&=(!st.count(i));
         for (int j=2;j*j<=i;j++) {
             if (i%j==0) {
                 if (st.count(j) or st.count(i/j)){flag=0;break;}
