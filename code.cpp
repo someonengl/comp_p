@@ -9,6 +9,7 @@ vector<int> v;
 vector<int> g[200005];
 bool vis[200005];
 void dfs(int start) {
+    vis[start]=1;
     v.push_back(start);
     for (int i:g[start]) {
         if (vis[i])continue;
