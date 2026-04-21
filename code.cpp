@@ -7,9 +7,13 @@ bool testcases=0;
 const int MOD=1e9;
 string s;
 vector<string> v;
+map<string,bool> vis;
 void func(string& s,int l,int r) {
     if (l==r) {
-        v.push_back(s);
+        if (!vis[s]) {
+            v.push_back(s);
+            vis[s]=1;
+        }
     }
     else {
         for (int i=l;i<=r;i++) {
