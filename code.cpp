@@ -7,17 +7,16 @@ bool testcases=0;
 const int MOD=1e9;
 string s;
 vector<string> v;
-void func(string sc,vector<char> left) {
-    if (sc.size()==s.size()) {
-        v.push_back(sc);
-        return;
+void func(string& s,int l,int r) {
+    if (l==r) {
+        v.push_back(s);
     }
-    for (int i=0;i<left.size();i++) {
-        char c=left[i];
-        sc.push_back(c);
-        left.erase(left.begin()+i);
-        func(sc,left);
-        sc.pop_back();
+    else {
+        for (int i=l;i<=r;i++) {
+            swap(s[i],s[l]);
+            func(s,l+1,r);
+            swap(s[i],s[l]);
+        }
     }
 }
 void solve(){
@@ -28,7 +27,7 @@ void solve(){
     string sc="";
     vector<char> left;
     for (char c:s)left.push_back(c);
-    func(sc,left);
+    func(sc,0,s.size()-1);
     cout<<v[n-1]<<endl;
 }
 signed main() {
