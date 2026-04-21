@@ -5,34 +5,42 @@ using namespace std;
 #define all(v) v.begin(),v.end()
 bool testcases=0;
 const int MOD=1e9;
+vector<int> ans;
+vector<int> g[200005];
+bool vis[200005];
+bool flag=1;
+void dfs(int start) {
+    vis[start]=1;
+    ans.push_back(start);
+    vector<int> adj;
+    for (int i:g[start]) {
+        if (!vis[i]) {
+            adj.push_back(i);
+        }
+    }
+    if (start==1) {
+        if (flag)flag=0;
+        else if (adj.size()==0) {
+            for (int i:ans) {
+                cout<<i<<' ';
+            }
+            exit(0);
+        }
+    }
+    sort(all(adj));
+    for (int i:adj)dfs(i);
+}
 void solve(){
-    int n,m;
-    cin>>n>>m;
-    int v[n+1];
-    for (int i=1;i<=n;i++)cin>>v[i];
-    set<int> st;
-    for (int i=1;i<=n;i++) {
-        for (int j=2;j*j<=v[i];j++) {
-            if (v[i]%j==0) {
-                st.insert(j);
-                st.insert(v[i]/j);
-            }
-        }
-        if (v[i]>1)st.insert(v[i]);
+    int n;
+    cin>>n;
+    for (int i=1;i<n;i++) {
+        int l,r;
+        cin>>l>>r;
+        g[l].push_back(r);
+        g[r].push_back(l);
     }
-    vector<int> ans;
-    for (int i=1;i<=m;i++) {
-        bool flag=1;
-        flag&=(!st.count(i));
-        for (int j=2;j*j<=i;j++) {
-            if (i%j==0) {
-                if (st.count(j) or st.count(i/j)){flag=0;break;}
-            }
-        }
-        if (flag)ans.push_back(i);
-    }
-    cout<<ans.size()<<endl;
-    for (int i:ans)cout<<i<<endl;
+    dfs(1);
+    for (int i:ans)cout<<i<<' ';
 }
 signed main() {
     iostream::sync_with_stdio(0);
