@@ -1,41 +1,25 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define int long long
+//#define int long long
 #define endl '\n'
 #define all(v) v.begin(),v.end()
 bool testcases=0;
 const int MOD=1e9;
-vector<int> ans;
+vector<int> v;
 vector<int> g[200005];
 bool vis[200005];
-bool flag=1;
-int par[200005];
-void dfs(int start,int p) {
-    par[start]=p;
-    vis[start]=1;
-    ans.push_back(start);
-    vector<int> adj;
+void dfs(int start) {
+    v.push_back(start);
     for (int i:g[start]) {
-        if (!vis[i]) {
-            adj.push_back(i);
-        }
+        if (vis[i])continue;
+        vis[i]=1;
+        dfs(i);
+        v.push_back(start);
     }
-    if (start==1) {
-        if (flag)flag=0;
-        else if (adj.size()==0) {
-            for (int i:ans) {
-                cout<<i<<' ';
-            }
-            exit(0);
-        }
-    }
-    for (int i:adj)dfs(i,start);
-    if (adj.size()==0)dfs(p,par[p]);
 }
 void solve(){
     int n;
     cin>>n;
-    memset(par,-1,sizeof(par));
     for (int i=1;i<n;i++) {
         int l,r;
         cin>>l>>r;
@@ -43,8 +27,8 @@ void solve(){
         g[r].push_back(l);
     }
     for (int i=1;i<=n;i++)sort(all(g[i]));
-    dfs(1,-1);
-    for (int i:ans)cout<<i<<' ';
+    dfs(1);
+    for (int i:v)cout<<i<<' ';
 }
 signed main() {
     iostream::sync_with_stdio(0);
