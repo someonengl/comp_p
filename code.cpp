@@ -5,6 +5,7 @@ using namespace std;
 #define all(v) v.begin(),v.end()
 bool testcases=0;
 const int MOD=1e9;
+map<int,array<int,2>>mp;
 void solve(){
     int h,w,n;
     cin>>h>>w>>n;
@@ -21,16 +22,9 @@ void solve(){
     sort(all(v[0]));
     sort(all(v[1]));
     for (int f=0;f<2;f++) {
-        int d=0;
+        int c=1;
         for (int i=1;i<v[f].size();i++) {
-            d+=v[f][i][0]-v[f][i-1][0]-1;
-            dv[f][i]=d;
-        }
-    }
-    map<int,array<int,2>>mp;
-    for (int f=0;f<2;f++) {
-        for (int i=1;i<v[f].size();i++) {
-            v[f][i][0]-=dv[f][i];
+            v[f][i][0]=c++;
         }
     }
     for (int f=0;f<2;f++) {
