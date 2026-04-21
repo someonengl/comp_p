@@ -5,24 +5,10 @@ using namespace std;
 #define all(v) v.begin(),v.end()
 bool testcases=0;
 void solve(){
-    vector<int> v;
-    for (int i=1;i<=1e16;i*=3) {
-        for (int j=1;j<=1e16;j*=5) {
-            if (i==1 and j==1)continue;
-            if (i*j>1e12)break;
-            v.push_back(i*j);
-        }
-    }
-    v.push_back(0);
-    sort(all(v));
     int n;
     cin>>n;
-    int ind=1;
-    while (n>=v[ind]-v[ind-1]-1) {
-        n-=v[ind]-v[ind-1]-1;
-        ind++;
-    }
-    cout<<v[ind-1]+n;
+    int v[]={1,2,4,7,8,11,13,14};
+    cout<<(v[(n-1)%8])*(15*(n-1)/8)<<endl;
 }
 signed main() {
     iostream::sync_with_stdio(0);
