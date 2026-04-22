@@ -7,7 +7,6 @@ bool testcases=1;
 void solve(){
     int n,m;
     cin>>n>>m;
-    cout<<m+n/2<<endl;
     int v[n+1][m+1];
     memset(v,0,sizeof(v));
     for (int i=1;i<=n/2-1+n%2;i++) {
