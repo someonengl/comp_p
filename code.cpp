@@ -3,7 +3,7 @@ using namespace std;
 #define int long long
 #define endl '\n'
 #define all(v) v.begin(),v.end()
-bool testcases=0;
+bool testcases=1;
 int a,b;
 int calc(vector<vector<char>>& v) { // c1 red c2 blue
     int A=0,B=0;
