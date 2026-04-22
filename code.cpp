@@ -3,7 +3,7 @@ using namespace std;
 #define int long long
 //#define endl '\n'
 #define all(v) v.begin(),v.end()
-bool testcases=1;
+bool testcases=0;
 void solve() {
     int n;
     cin>>n;
