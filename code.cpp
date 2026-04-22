@@ -7,13 +7,13 @@ bool testcases=1;
 int a,b;
 int calc(vector<vector<char>>& v) { // c1 red c2 blue
     int A=0,B=0;
-    for (int i=0;i<v.size();i++) {
+    for (int i=0;i<a;i++) {
         int c1=0,c2=0;
-        for (int u=0;u<v[i].size();u++) {
+        for (int u=0;u<b;u++) {
             if (v[i][u]=='+')c1++;
             else c2++;
         }
-        if (c2>c1)B++;
+        if (c1>c2)B++;
     }
     for (int u=0;u<b;u++) {
         int c1=0,c2=0;
@@ -21,7 +21,7 @@ int calc(vector<vector<char>>& v) { // c1 red c2 blue
             if (v[i][u]=='+')c1++;
             else c2++;
         }
-        if (c1>c2)A++;
+        if (c2>c1)A++;
     }
     return A+B;
 }
