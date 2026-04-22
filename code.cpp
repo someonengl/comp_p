@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define int long long
-#define endl '\n'
+//#define endl '\n'
 #define all(v) v.begin(),v.end()
 bool testcases=1;
 int a,b;
