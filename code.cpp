@@ -3,51 +3,23 @@ using namespace std;
 #define int long long
 //#define endl '\n'
 #define all(v) v.begin(),v.end()
-bool testcases=1;
-int a,b;
-int calc(vector<vector<char>>& v) { // c1 red c2 blue
-    int A=0,B=0;
-    for (int i=0;i<a;i++) {
-        int c1=0,c2=0;
-        for (int u=0;u<b;u++) {
-            if (v[i][u]=='+')c1++;
-            else c2++;
-        }
-        if (c1>c2)B++;
-    }
-    for (int u=0;u<b;u++) {
-        int c1=0,c2=0;
-        for (int i=0;i<a;i++) {
-            if (v[i][u]=='+')c1++;
-            else c2++;
-        }
-        if (c2>c1)A++;
-    }
-    return A+B;
-}
+bool testcases=0;
 void solve(){
-    cin>>a>>b;
-    int n=a*b;
-    int mx=-1;
-    vector<vector<char>> ans;
-    for (int mask=0;mask<(1<<n);mask++) {
-        vector<vector<char>> temp(a,vector<char>(b));
-        for (int i=0;i<n;i++) {
-            temp[i/b][i%b]=(mask>>i)&1?'+':'-';
-        }
-        int tempmx=calc(temp);
-        if (tempmx>mx) {
-            mx=tempmx;
-            ans=temp;
+    int n;
+    cin>>n;
+    int ls=0,sum=0;
+    int ans=0;
+    int v[n+1];
+    for (int i=1;i<=n;i++) {
+        cin>>v[i];
+        sum+=v[i];
+        if (sum>=ls) {
+            ls=sum;
+            ans++;
+            sum=0;
         }
     }
-    cout<<mx<<endl;
-    for (auto v:ans) {
-        for (char c:v) {
-            cout<<c;
-        }
-        cout<<endl;
-    }
+    cout<<ans<<endl;
 }
 signed main() {
     iostream::sync_with_stdio(0);
