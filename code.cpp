@@ -4,20 +4,31 @@ using namespace std;
 //#define endl '\n'
 #define all(v) v.begin(),v.end()
 bool testcases=0;
-void solve(){
-    int n;
-    cin>>n;
+int v[100000+1];
+int n;
+int calc(int st) {
     int ls=0,sum=0;
     int ans=0;
-    int v[n+1];
-    for (int i=1;i<=n;i++) {
-        cin>>v[i];
+    for (int i=1;i<=st;i++)sum+=v[i];
+    ans=1;
+    ls=sum;
+    sum=0;
+    for (int i=st+1;i<=n;i++) {
         sum+=v[i];
         if (sum>=ls) {
             ls=sum;
-            ans++;
             sum=0;
+            ans++;
         }
+    }
+    return ans;
+}
+void solve(){
+    cin>>n;
+    int ans=0;
+    for (int i=1;i<=n;i++)cin>>v[i];
+    for (int i=1;i<=n;i++) {
+        ans=max(ans,calc(i));
     }
     cout<<ans<<endl;
 }
