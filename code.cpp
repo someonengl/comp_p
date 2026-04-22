@@ -10,8 +10,8 @@ void solve(){
     cout<<m+n/2<<endl;
     int ans[n+1][m+1];
     memset(ans,0,sizeof(ans));
-    for (int i=1;i<=n/2;i++) {
-        for (int j=1;j<=(m+1)/2;j++) {
+    for (int i=1;i<=n/2-1+n%2;i++) {
+        for (int j=1;j<=(m+1)/2-1+m%2;j++) {
             ans[i][j]=1;
         }
     }
