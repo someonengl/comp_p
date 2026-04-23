@@ -8,15 +8,15 @@ void solve() {
     int n,m;
     cin>>n>>m;
     bool flag=0;
-    vector<vector<char>> ans(n+1,vector<char>(m+1,'-'));
     if (n>m)swap(n,m);
-    if (n<3)goto afterloop;
-    for (int i=1;i<=(n-1)/2;i++) {
-        for (int j=1;j<=(m+1)/2+1;j++) {
-            ans[i][j]='+';
-        }
-    }
-    afterloop:
+    vector<vector<char>> ans(n+1,vector<char>(m+1,'-'));
+    // if (n<3)goto afterloop;
+    // for (int i=1;i<=(n-1)/2;i++) {
+    //     for (int j=1;j<=(m+1)/2+1;j++) {
+    //         ans[i][j]='+';
+    //     }
+    // }
+    // afterloop:
     function<int(vector<vector<char>>&)> calc=[&](vector<vector<char>>& v) { // c1 red c2 blue
         int A=0,B=0;
         int a=n,b=m;
