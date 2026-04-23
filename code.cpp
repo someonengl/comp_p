@@ -39,9 +39,18 @@ void solve() {
         return A+B;
     };
     cout<<calc(ans)<<endl;
+    if (flag) {
+        for (int j=1;j<=m;j++) {
+            for (int i=1;i<=n;i++) {
+                cout<<ans[i][j];
+            }
+            cout<<endl;
+        }
+        return;
+    }
     for (int i=1;i<=n;i++) {
         for (int j=1;j<=m;j++) {
-            cout<<(flag?ans[j][i]:ans[i][j]);
+            cout<<ans[i][j];
         }
         cout<<endl;
     }
