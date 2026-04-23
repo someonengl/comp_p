@@ -8,7 +8,7 @@ void solve() {
     int n,m;
     cin>>n>>m;
     bool flag=0;
-    if (m>n)swap(n,m);
+    if (m>n){swap(n,m);flag=1;}
     vector<vector<char>> ans(n+1,vector<char>(m+1,'-'));
     // if (n<3)goto afterloop;
     // for (int i=1;i<=(n-1)/2;i++) {
