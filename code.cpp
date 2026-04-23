@@ -41,7 +41,7 @@ void solve() {
     cout<<calc(ans)<<endl;
     for (int i=1;i<=n;i++) {
         for (int j=1;j<=m;j++) {
-            cout<<(flag?ans[i][j]:ans[i][j]);
+            cout<<(flag?ans[j][i]:ans[i][j]);
         }
         cout<<endl;
     }
