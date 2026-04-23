@@ -26,7 +26,7 @@ void solve() {
                 if (v[i][u]=='+')c1++;
                 else c2++;
             }
-            if (c1>c2)B++;
+            if ((c1>c2))B++;
         }
         for (int u=1;u<=b;u++) {
             int c1=0,c2=0;
@@ -42,7 +42,7 @@ void solve() {
     if (flag) {
         for (int j=1;j<=m;j++) {
             for (int i=1;i<=n;i++) {
-                cout<<ans[i][j];
+                cout<<(ans[i][j]=='+'?'-':'+');
             }
             cout<<endl;
         }
