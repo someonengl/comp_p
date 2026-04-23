@@ -15,7 +15,7 @@ void solve() {
     int cc[m+1],cr[n+1];
     memset(cc,0,sizeof(cc));
     memset(cr,0,sizeof(cr));
-    vector<vector<char>> v(n+1,vector<char>(m+1,'-'));
+    vector<vector<char>> v(max(n,m)+1,vector<char>(max(n,m)+1,'-'));
     for (int i=1;i<=n;i++) {
         for (int j=1;j<=m;j++) {
             if (cc[j]<(n-1)/2 and cr[i]<(m/2+1)) {
