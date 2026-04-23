@@ -11,7 +11,7 @@ void solve() {
     if (m>n){swap(n,m);flag=1;}
     vector<vector<char>> ans(n+1,vector<char>(m+1,'-'));
     if (n<3)goto afterloop;
-    for (int i=1;i<=(n-1)/2;i++) {
+    for (int i=1;i<=max(n,(n-1)/2);i++) {
         for (int j=1;j<=max(m,(m+1)/2+1);j++) {
             ans[i][j]='+';
         }
