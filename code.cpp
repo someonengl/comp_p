@@ -30,11 +30,13 @@ void solve() {
     cin>>n>>m;
     bool flag=0;
     vector<vector<char>> ans(n+1,vector<char>(m+1,'-'));
+    if (n<3)goto afterloop;
     for (int i=1;i<=(n-1)/2;i++) {
         for (int j=1;j<=(m+1)/2+1;j++) {
             ans[i][j]='+';
         }
     }
+    afterloop:
     cout<<calc(ans)<<endl;
     for (int i=1;i<=n;i++) {
         for (int j=1;j<=m;j++) {
